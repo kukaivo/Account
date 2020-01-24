@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Savings Account</title>
+		<style type="text/css">
+			p{
+				display: inline-block;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>Savings account</h1>
+		<p>Welcome back, <p id="customerName"></p>.</p>
+		<p>Your current balance is: £<p id="customerBalance"></p></p>
+		<br>
+		Enter an amount: <input type="number" id="amount">
+		<br>
+		<br>
+		<button onclick="customer1.deposit(amount.value)">Deposit</button>
+		<button onclick="customer1.withdraw(amount.value)">Withdraw</button>
+
+		<script type="text/javascript">
+			class customer{
+				constructor(name, balance){
+					this.name = name;
+					this.balance = balance;
+					this.displayBalance();
+				}
+				displayBalance(){
+					document.getElementById('customerName').innerHTML = this.name;
+					document.getElementById('customerBalance').innerHTML = this.balance;
+				}
+				withdraw(amount){
+					amount = parseFloat(amount);
+					if(this.balance <= 0){
+						alert('Not enough money!');
+					}
+					else{
+						this.balance -= amount;
+					}
+					this.displayBalance();
+				}
+				deposit(amount){
+					amount = parseFloat(amount);
+					this.balance += amount;
+					this.displayBalance();
+				}
+			}
+
+			var customer1 = new customer("Tanveer", 0);
+		</script>
+	</body>
+</html>
